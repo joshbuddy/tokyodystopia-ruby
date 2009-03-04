@@ -368,7 +368,7 @@ static VALUE idb_iternext(VALUE vself){
 }
 
 static VALUE idb_search(VALUE vself, VALUE vexp, VALUE vmode){
-  VALUE vidb;
+  VALUE vidb, vary;
   TCIDB *idb;
   uint64_t *keys;
   int np;
@@ -379,11 +379,13 @@ static VALUE idb_search(VALUE vself, VALUE vexp, VALUE vmode){
   xmode = NUM2INT(vmode);
   xexp = StringValuePtr(vexp);
   keys = tcidbsearch(idb, xexp, xmode, &np);
-  return longstovary(keys, (int)np);
+  vary = longstovary(keys, (int)np);
+  tcfree(keys);
+  return vary;
 }
 
 static VALUE idb_compound_search(VALUE vself, VALUE vexp){
-  VALUE vidb;
+  VALUE vidb, vary;
   TCIDB *idb;
   uint64_t *keys;
   int np;
@@ -392,7 +394,9 @@ static VALUE idb_compound_search(VALUE vself, VALUE vexp){
   Data_Get_Struct(vidb, TCIDB, idb);
   xexp = StringValuePtr(vexp);
   keys = tcidbsearch2(idb, xexp, &np);
-  return longstovary(keys, (int)np);
+  vary = longstovary(keys, (int)np);
+  tcfree(keys);
+  return vary;
 }
 
 static VALUE idb_sync(VALUE vself){
