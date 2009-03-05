@@ -191,13 +191,25 @@ static void idb_init(void){
   rb_define_const(cls_idb, "TDEFLATE", INT2NUM(HDBTDEFLATE));
   rb_define_const(cls_idb, "TBZIP", INT2NUM(HDBTBZIP));
   rb_define_const(cls_idb, "TTCBS", INT2NUM(HDBTTCBS));
-  rb_define_const(cls_idb, "OREADER", INT2NUM(HDBOREADER));
-  rb_define_const(cls_idb, "OWRITER", INT2NUM(HDBOWRITER));
-  rb_define_const(cls_idb, "OCREAT", INT2NUM(HDBOCREAT));
-  rb_define_const(cls_idb, "OTRUNC", INT2NUM(HDBOTRUNC));
-  rb_define_const(cls_idb, "ONOLCK", INT2NUM(HDBONOLCK));
-  rb_define_const(cls_idb, "OLCKNB", INT2NUM(HDBOLCKNB));
-  rb_define_const(cls_idb, "OTSYNC", INT2NUM(HDBOTSYNC));
+
+  rb_define_const(cls_idb, "IDBTLARGE", INT2NUM(IDBTLARGE));
+  rb_define_const(cls_idb, "IDBTDEFLATE", INT2NUM(IDBTDEFLATE));
+  rb_define_const(cls_idb, "IDBTBZIP", INT2NUM(IDBTBZIP));
+  rb_define_const(cls_idb, "IDBTTCBS", INT2NUM(IDBTTCBS));
+  rb_define_const(cls_idb, "IDBOWRITER", INT2NUM(IDBOWRITER));
+  rb_define_const(cls_idb, "IDBOREADER", INT2NUM(IDBOREADER));
+  rb_define_const(cls_idb, "IDBOCREAT", INT2NUM(IDBOCREAT));
+  rb_define_const(cls_idb, "IDBOTRUNC", INT2NUM(IDBOTRUNC));
+  rb_define_const(cls_idb, "IDBONOLCK", INT2NUM(IDBONOLCK));
+  rb_define_const(cls_idb, "IDBOLCKNB", INT2NUM(IDBOLCKNB));
+  rb_define_const(cls_idb, "IDBSSUBSTR", INT2NUM(IDBSSUBSTR));
+  rb_define_const(cls_idb, "IDBSPREFIX", INT2NUM(IDBSPREFIX));
+  rb_define_const(cls_idb, "IDBSSUFFIX", INT2NUM(IDBSSUFFIX));
+  rb_define_const(cls_idb, "IDBSFULL", INT2NUM(IDBSFULL));
+  rb_define_const(cls_idb, "IDBSTOKEN", INT2NUM(IDBSTOKEN));
+  rb_define_const(cls_idb, "IDBSTOKPRE", INT2NUM(IDBSTOKPRE));
+  rb_define_const(cls_idb, "IDBSTOKSUF", INT2NUM(IDBSTOKSUF));
+  
   rb_define_private_method(cls_idb, "initialize", idb_initialize, 0);
   rb_define_method(cls_idb, "errmsg", idb_errmsg, -1);
   rb_define_method(cls_idb, "ecode", idb_ecode, 0);
